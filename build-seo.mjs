@@ -130,6 +130,35 @@ writeFile("search-index.json", JSON.stringify({
   items: searchIndex
 }));
 
+// Compact bot database JSON for 24/7 Netlify Function webhook (zero vm/parsing on cold start)
+const htmlToPlain = (html) =>
+  String(html)
+    .replace(/<h[23][^>]*>(.*?)<\/h[23]>/gi, "\n\n$1:\n")
+    .replace(/<li[^>]*>/gi, "\n• ")
+    .replace(/<\/(p|tr|div|ul|ol)>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+
+writeFile("bot-data.json", JSON.stringify({
+  cats: Object.fromEntries(categories.map((c) => [c.id, c.title])),
+  questions: questions.map((q) => {
+    const plain = htmlToPlain(q.answer);
+    return {
+      id: q.id,
+      cat: q.cat,
+      title: q.title,
+      short: q.short,
+      kw: q.keywords || "",
+      ex: plain.length > 1300 ? plain.slice(0, 1300).trim() + "…" : plain
+    };
+  })
+}));
+
 // Progressive enhancement script for ALL static SEO pages
 const enhanceJs = `(() => {
   const SITE_NAME = ${JSON.stringify(SITE_NAME)};
