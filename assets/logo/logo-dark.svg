@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,700;1,7..72,600&amp;display=swap');
+    </style>
+  </defs>
+  <rect width="1024" height="1024" fill="#141310"/>
+  <circle cx="512" cy="512" r="446" fill="none" stroke="#2f2c25" stroke-width="4"/>
+  <!-- Жёлтый маркер под буквой О -->
+  <rect x="518" y="302" width="308" height="404" rx="28" fill="#ffe15a" transform="rotate(-2.5 672 504)"/>
+  <!-- Монограмма ХО -->
+  <text x="218" y="656" font-family="'Literata', Georgia, serif" font-weight="700" font-size="430" fill="#f5f2ea" letter-spacing="-14">Х</text>
+  <text x="546" y="656" font-family="'Literata', Georgia, serif" font-weight="600" font-style="italic" font-size="430" fill="#141310">О</text>
+  <!-- Фирменная редакционная линейка снизу -->
+  <rect x="242" y="758" width="540" height="8" rx="4" fill="#3a362c"/>
+  <rect x="242" y="758" width="210" height="8" rx="4" fill="#ffe15a"/>
+</svg>

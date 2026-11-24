@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Как установить Windows 11 на старый ПК, если ругается на TPM 2.0? — ХайпОтвет</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/logo/logo-dark.svg" />
+  <meta name="description" content="Сначала проверьте BIOS — на ПК 2018 года и новее модуль TPM (fTPM / PTT) часто просто выключен. Если его реально нет, официальная поддержка Windows 11 недоступна, а обходные способы несут риски с обновлениями и играми." />
+  <link rel="canonical" href="https://hypeotvet.ru/q/p01-pc-win11-no-tpm/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="ХайпОтвет" />
+  <meta property="og:title" content="Как установить Windows 11 на старый ПК, если ругается на TPM 2.0? — ХайпОтвет" />
+  <meta property="og:description" content="Сначала проверьте BIOS — на ПК 2018 года и новее модуль TPM (fTPM / PTT) часто просто выключен. Если его реально нет, официальная поддержка Windows 11 недоступна, а обходные способы несут риски с обновлениями и играми." />
+  <meta property="og:url" content="https://hypeotvet.ru/q/p01-pc-win11-no-tpm/" />
+  <script>(function(){try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark";}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Как установить Windows 11 на старый ПК, если ругается на TPM 2.0?","acceptedAnswer":{"@type":"Answer","text":"Сначала проверьте BIOS — на ПК 2018 года и новее модуль TPM (fTPM / PTT) часто просто выключен. Если его реально нет, официальная поддержка Windows 11 недоступна, а обходные способы несут риски с обновлениями и играми. Шаг 1. Проверьте, не выключен ли TPM в BIOS Большинство процессоров Intel (8-го поколения и новее) и AMD Ryzen (2000-й серии и новее) уже имеют встроенный программный TPM, но на многих материнских платах он отключён по умолчанию: На материнских платах AMD зайдите в BIOS и включите пункт AMD fTPM (обычно в разделе Advanced или Peripherals ). На платах Intel включите Intel PTT (Platform Trust Technology) в разделе Security . Заодно убедитесь, что включён режим UEFI (отключён CSM) и Secure Boot . Шаг 2. Если железо действительно старое Microsoft официально требует TPM 2.0 и совместимый процессор ради безопасности и стабильности. Энтузиасты иногда обходят проверку при создании флешки в Rufus (галочка снятия требований к TPM/Secure Boot) для личных старых ПК, но важно учитывать последствия: Крупные ежегодные обновления (24H2/25H2 и далее) могут не приходить автоматически или ломать загрузку. Античиты популярных онлайн-игр (например, Vanguard в Valorant, FACEIT) на Windows 11 жёстко требуют реальный TPM 2.0 и Secure Boot — обход им не поможет. Для старых офисных и домашних ПК без TPM 2.0 часто практичнее остаться на поддерживаемой корпоративной ветке Windows или перейти на лёгкий Linux (Mint/Ubuntu)."}}]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://hypeotvet.ru/"},{"@type":"ListItem","position":2,"name":"Ноутбуки, ПК и железо","item":"https://hypeotvet.ru/c/pc/"},{"@type":"ListItem","position":3,"name":"Как установить Windows 11 на старый ПК, если ругается на TPM 2.0?","item":"https://hypeotvet.ru/q/p01-pc-win11-no-tpm/"}]}]</script>
+</head>
+<body data-base="../../">
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../../" class="logo" aria-label="ХайпОтвет — на главную">Хайп<span>Ответ</span></a>
+      <form class="search" id="searchForm" role="search" autocomplete="off">
+        <label for="searchInput" class="visually-hidden">Поиск по вопросам</label>
+        <input type="search" id="searchInput" placeholder="Поиск по вопросам" />
+        <button type="submit">Найти</button>
+      </form>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="../../">Главная</a>
+        <a href="../../categories/">Темы</a>
+        <a href="../../#/tools">Инструменты</a>
+        <a href="../../#/saved">Сохранённое</a>
+      </nav>
+      <button type="button" class="theme-btn" id="themeToggle">Ночь</button>
+    </div>
+  </header>
+  <main class="container">
+        <nav class="crumbs" aria-label="Навигационная цепочка"><ol><li><a href="../../">Главная</a></li><li><a href="../../c/pc/">Ноутбуки, ПК и железо</a></li><li><span aria-current="page">Вопрос</span></li></ol></nav>
+        <div class="layout">
+          <article class="article">
+            <h1>Как установить Windows 11 на старый ПК, если ругается на TPM 2.0?</h1>
+            <div class="meta"><span class="tag tag--new">Новое</span><a href="../../c/pc/">Ноутбуки, ПК и железо</a><span>1 мин чтения</span></div>
+            <div class="lede"><b>Коротко</b>Сначала проверьте BIOS — на ПК 2018 года и новее модуль TPM (fTPM / PTT) часто просто выключен. Если его реально нет, официальная поддержка Windows 11 недоступна, а обходные способы несут риски с обновлениями и играми.</div>
+            <div class="content">
+      <h2>Шаг 1. Проверьте, не выключен ли TPM в BIOS</h2>
+      <p>Большинство процессоров Intel (8-го поколения и новее) и AMD Ryzen (2000-й серии и новее) уже имеют встроенный программный TPM, но на многих материнских платах он отключён по умолчанию:</p>
+      <ul>
+        <li>На материнских платах <b>AMD</b> зайдите в BIOS и включите пункт <b>AMD fTPM</b> (обычно в разделе <code>Advanced</code> или <code>Peripherals</code>).</li>
+        <li>На платах <b>Intel</b> включите <b>Intel PTT</b> (Platform Trust Technology) в разделе <code>Security</code>.</li>
+        <li>Заодно убедитесь, что включён режим <b>UEFI</b> (отключён CSM) и <b>Secure Boot</b>.</li>
+      </ul>
+      <h2>Шаг 2. Если железо действительно старое</h2>
+      <p>Microsoft официально требует TPM 2.0 и совместимый процессор ради безопасности и стабильности. Энтузиасты иногда обходят проверку при создании флешки в <b>Rufus</b> (галочка снятия требований к TPM/Secure Boot) для личных старых ПК, но важно учитывать последствия:</p>
+      <ul>
+        <li class="con">Крупные ежегодные обновления (24H2/25H2 и далее) могут не приходить автоматически или ломать загрузку.</li>
+        <li class="con">Античиты популярных онлайн-игр (например, Vanguard в Valorant, FACEIT) на Windows 11 <b>жёстко требуют реальный TPM 2.0 и Secure Boot</b> — обход им не поможет.</li>
+        <li class="pro">Для старых офисных и домашних ПК без TPM 2.0 часто практичнее остаться на поддерживаемой корпоративной ветке Windows или перейти на лёгкий Linux (Mint/Ubuntu).</li>
+      </ul>
+    </div>
+            <div class="actions">
+              <div class="actions__right" style="margin-left:0">
+                <a class="btn" href="../../#/q/p01-pc-win11-no-tpm">Открыть интерактивную версию</a>
+                <button type="button" class="btn" id="shareBtn">Скопировать ссылку</button>
+              </div>
+            </div>
+            <div class="cta-strip">
+              <div class="cta-strip__text"><b>Новые разборы и шпаргалки — в Telegram</b><span>Подпишитесь на канал, чтобы не пропускать полезные инструкции.</span></div>
+              <div class="cta-strip__btns"><a class="btn btn--primary" href="https://t.me/hypeotvet" target="_blank" rel="noopener noreferrer">Открыть Telegram</a></div>
+            </div>
+          </article>
+          <aside class="sidebar" aria-label="Другие вопросы">
+            <section class="side"><h2>Ещё в разделе «Ноутбуки, ПК и железо»</h2><ul><li><a href="../vybor-noutbuka-2026/">Как выбрать ноутбук для учёбы, работы и монтажа в 2026 году?</a></li><li><a href="../noutbuk-greetsya-shumit/">Почему ноутбук сильно греется и шумит — что сделать самому?</a></li><li><a href="../ssd-nvme-vs-sata/">SSD M.2 NVMe или SATA: как ускорить старый ноутбук или ПК?</a></li><li><a href="../skolko-operativnoj-pamyati-nuzhno/">Сколько оперативной памяти реально нужно в 2026 году: 8, 16 или 32 ГБ?</a></li><li><a href="../sobrat-pk-sovmestimost/">Как собрать ПК самому и не ошибиться с совместимостью деталей?</a></li><li><a href="../monitor-ips-oled-va/">Монитор для работы и игр: IPS, OLED или VA — что выбрать?</a></li></ul></section>
+            <section class="side"><h2>Горячее в других темах</h2><ul><li><a href="../neuro-bez-vpn-besplatno/">Какие нейросети работают в России без VPN и бесплатно?</a></li><li><a href="../analog-chatgpt/">Чем заменить ChatGPT в России?</a></li><li><a href="../deepseek-kak-polzovatsya/">Что такое DeepSeek и как им пользоваться?</a></li><li><a href="../kartinka-besplatno-bez-registracii/">Как сгенерировать картинку нейросетью бесплатно и без регистрации?</a></li><li><a href="../video-neuroset-besplatno/">Какая нейросеть делает видео бесплатно?</a></li></ul></section>
+          </aside>
+        </div></main>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="footer__brand">ХайпОтвет</div>
+        <div class="footer__links">
+          <a href="../../categories/">Все темы</a>
+          <a href="../../#/tools">Калькуляторы и чек-листы</a>
+          <a href="../../#/saved">Сохранённое</a>
+          <a href="../../about/">О сайте и правила</a>
+        </div>
+      </div>
+      <p class="footer__muted">Коротко и по делу о том, что спрашивают в Reels, TikTok и Shorts. Условия сервисов и законы меняются — перепроверяйте детали перед оплатой или подачей заявлений.</p>
+    </div>
+  </footer>
+  <script src="../../static-enhance.js"></script>
+</body>
+</html>

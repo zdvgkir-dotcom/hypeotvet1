@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ХайпОтвет — ответы на вопросы, которые все гуглят</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo/logo-dark.svg" />
+  <meta name="description" content="Разбираем частые вопросы из Reels, TikTok и Shorts: смартфоны и iCloud, ЖКХ и Госуслуги, игры и Steam, аренда жилья, путешествия, медицина по ОМС, приложения и нейросети." />
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "dark") document.documentElement.dataset.theme = "dark";
+      } catch(e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#/" class="logo" aria-label="ХайпОтвет — на главную">Хайп<span>Ответ</span></a>
+      <form class="search" id="searchForm" role="search" autocomplete="off">
+        <label for="searchInput" class="visually-hidden">Поиск по вопросам</label>
+        <input type="search" id="searchInput" placeholder="Поиск по вопросам" />
+        <button type="submit">Найти</button>
+      </form>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#/" data-nav="home">Главная</a>
+        <a href="#/categories" data-nav="categories">Темы</a>
+        <a href="#/tools" data-nav="tools">Инструменты</a>
+        <a href="#/saved" data-nav="saved">Сохранённое<span class="nav__badge" id="savedBadge" hidden>0</span></a>
+      </nav>
+      <button type="button" class="theme-btn" id="themeToggle" aria-label="Переключить тему оформления">Ночь</button>
+    </div>
+  </header>
+
+  <main id="app" class="container" tabindex="-1"></main><noscript><div class="container"><h2>Все разделы</h2><ul><li><a href="c/phones/">Смартфоны: iPhone и Android</a></li><li><a href="c/pc/">Ноутбуки, ПК и железо</a></li><li><a href="c/gadgets/">Гаджеты и электроника</a></li><li><a href="c/home-tech/">Техника для дома и умный дом</a></li><li><a href="c/apps/">Приложения и полезный софт</a></li><li><a href="c/games/">Игры, Steam и консоли</a></li><li><a href="c/access/">Доступность сервисов и оплаты в РФ</a></li><li><a href="c/security/">Кибербезопасность и защита от мошенников</a></li><li><a href="c/crypto-fin/">Банки, маркетплейсы и онлайн-покупки</a></li><li><a href="c/zhkh/">ЖКХ, счётчики и коммуналка</a></li><li><a href="c/gosuslugi/">Госуслуги, прописка и документы</a></li><li><a href="c/housing/">Жильё, аренда и приёмка</a></li><li><a href="c/travel/">Путешествия, билеты и визы</a></li><li><a href="c/health/">Медицина по ОМС и здоровье</a></li><li><a href="c/mobile-net/">Мобильная связь, тарифы и интернет</a></li><li><a href="c/auto-tech/">Автогаджеты, камеры и электротранспорт</a></li><li><a href="c/neuro/">Нейросети без VPN</a></li><li><a href="c/images/">Картинки и видео ИИ</a></li><li><a href="c/vibecoding/">Вайбкодинг бесплатно</a></li><li><a href="c/dev/">Разработка и сайты</a></li><li><a href="c/bots/">Боты и серверы</a></li><li><a href="c/ai-work/">ИИ для работы</a></li><li><a href="c/startups/">Стартапы</a></li><li><a href="c/marketing/">Маркетинг и продвижение</a></li><li><a href="c/money/">Заработок онлайн</a></li></ul></div></noscript>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="footer__brand">ХайпОтвет</div>
+        <div class="footer__links">
+          <a href="#/categories">Все темы</a>
+          <a href="#/tools">Калькуляторы и чек-листы</a>
+          <a href="#/saved">Сохранённое</a>
+          <a href="#/about">О сайте и правила</a>
+          <button type="button" class="link-btn" id="footerSuggestBtn">Предложить вопрос</button>
+          <button type="button" class="link-btn" id="randomBtn">Случайный вопрос</button>
+        </div>
+      </div>
+      <p class="footer__muted">Коротко и по делу о том, что спрашивают в Reels, TikTok и Shorts: электроника, ЖКХ, Госуслуги, финансы, путешествия, медицина, приложения и нейросети. Условия сервисов и законы меняются — перепроверяйте детали перед оплатой или подачей заявлений.</p>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="suggestModal" aria-labelledby="suggestModalTitle">
+    <form class="modal__box" id="suggestModalForm" method="dialog">
+      <div class="modal__head">
+        <h2 id="suggestModalTitle">Предложить вопрос для разбора</h2>
+        <button type="button" class="modal__close" id="suggestModalClose" aria-label="Закрыть">Закрыть</button>
+      </div>
+      <p class="modal__desc">Напишите, что вы недавно гуглили или видели в роликах, но не нашли понятного ответа.</p>
+      <label class="field-label" for="suggestCat">Тема</label>
+      <select class="field-input" id="suggestCat"></select>
+      <label class="field-label" for="suggestText">Ваш вопрос</label>
+      <textarea class="field-input" id="suggestText" rows="3" required placeholder="Например: как оформить налоговый вычет за лечение зубов через Госуслуги?"></textarea>
+      <div class="modal__actions">
+        <button type="submit" class="btn btn--primary">Сохранить и скопировать</button>
+        <a class="btn" id="suggestTgLink" target="_blank" rel="noopener noreferrer">Отправить в Telegram</a>
+      </div>
+      <p class="modal__status" id="suggestStatus" aria-live="polite"></p>
+    </form>
+  </dialog>
+
+  <script src="data.js"></script>
+  <script src="data/pack-01.js"></script>
+  <script src="data/pack-02.js"></script>
+  <script src="data/pack-03.js"></script>
+  <script src="data/pack-04.js"></script>
+  <script src="data/pack-05.js"></script>
+  <script src="data/pack-06.js"></script>
+  <script src="data/pack-07.js"></script>
+  <script src="data/pack-08.js"></script>
+  <script src="data/pack-09.js"></script>
+  <script src="data/pack-10.js"></script>
+  <script src="data/pack-11.js"></script>
+  <script src="data/pack-12.js"></script>
+  <script src="data/pack-13.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

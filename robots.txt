@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hypeotvet.ru/sitemap.xml

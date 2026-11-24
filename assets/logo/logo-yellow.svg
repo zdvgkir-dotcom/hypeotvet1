@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,700;1,7..72,600&amp;display=swap');
+    </style>
+  </defs>
+  <rect width="1024" height="1024" fill="#ffe15a"/>
+  <circle cx="512" cy="512" r="440" fill="none" stroke="#17150f" stroke-width="10"/>
+  <!-- Монограмма ХО -->
+  <text x="210" y="646" font-family="'Literata', Georgia, serif" font-weight="700" font-size="430" fill="#17150f" letter-spacing="-14">Х</text>
+  <text x="534" y="646" font-family="'Literata', Georgia, serif" font-weight="600" font-style="italic" font-size="430" fill="#17150f">О</text>
+  <!-- Контрастная черта ответа -->
+  <rect x="248" y="742" width="528" height="14" rx="7" fill="#17150f"/>
+</svg>

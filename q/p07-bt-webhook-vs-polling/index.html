@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webhook или Long Polling: что выбрать для Telegram-бота? — ХайпОтвет</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/logo/logo-dark.svg" />
+  <meta name="description" content="Для старта, тестов и небольших ботов проще Long Polling — он не требует домена и SSL. Для проектов с нагрузкой, мини-приложений и бессерверного хостинга лучше Webhook." />
+  <link rel="canonical" href="https://hypeotvet.ru/q/p07-bt-webhook-vs-polling/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="ХайпОтвет" />
+  <meta property="og:title" content="Webhook или Long Polling: что выбрать для Telegram-бота? — ХайпОтвет" />
+  <meta property="og:description" content="Для старта, тестов и небольших ботов проще Long Polling — он не требует домена и SSL. Для проектов с нагрузкой, мини-приложений и бессерверного хостинга лучше Webhook." />
+  <meta property="og:url" content="https://hypeotvet.ru/q/p07-bt-webhook-vs-polling/" />
+  <script>(function(){try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark";}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Webhook или Long Polling: что выбрать для Telegram-бота?","acceptedAnswer":{"@type":"Answer","text":"Для старта, тестов и небольших ботов проще Long Polling — он не требует домена и SSL. Для проектов с нагрузкой, мини-приложений и бессерверного хостинга лучше Webhook. Сравнение подходов Критерий Long Polling Webhook Как работает Бот сам постоянно опрашивает сервер Telegram Telegram присылает POST-запрос на ваш URL Требования Только доступ в интернет, даже на домашнем ПК Публичный сервер, домен и валидный HTTPS Задержка и нагрузка Чуть выше расход трафика на пустые запросы Мгновенная реакция, удобно масштабировать Когда что выбирать Long Polling — если вы новичок, делаете MVP или у бота меньше нескольких тысяч активных пользователей в день. Webhook — если нужен быстрый отклик, интеграция с платежами/сайтом или запуск в облачных функциях (Yandex Cloud Functions). На Webhook обязательно задайте secret_token при вызове setWebhook и проверяйте заголовок X-Telegram-Bot-Api-Secret-Token ."}}]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://hypeotvet.ru/"},{"@type":"ListItem","position":2,"name":"Боты и серверы","item":"https://hypeotvet.ru/c/bots/"},{"@type":"ListItem","position":3,"name":"Webhook или Long Polling: что выбрать для Telegram-бота?","item":"https://hypeotvet.ru/q/p07-bt-webhook-vs-polling/"}]}]</script>
+</head>
+<body data-base="../../">
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../../" class="logo" aria-label="ХайпОтвет — на главную">Хайп<span>Ответ</span></a>
+      <form class="search" id="searchForm" role="search" autocomplete="off">
+        <label for="searchInput" class="visually-hidden">Поиск по вопросам</label>
+        <input type="search" id="searchInput" placeholder="Поиск по вопросам" />
+        <button type="submit">Найти</button>
+      </form>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="../../">Главная</a>
+        <a href="../../categories/">Темы</a>
+        <a href="../../#/tools">Инструменты</a>
+        <a href="../../#/saved">Сохранённое</a>
+      </nav>
+      <button type="button" class="theme-btn" id="themeToggle">Ночь</button>
+    </div>
+  </header>
+  <main class="container">
+        <nav class="crumbs" aria-label="Навигационная цепочка"><ol><li><a href="../../">Главная</a></li><li><a href="../../c/bots/">Боты и серверы</a></li><li><span aria-current="page">Вопрос</span></li></ol></nav>
+        <div class="layout">
+          <article class="article">
+            <h1>Webhook или Long Polling: что выбрать для Telegram-бота?</h1>
+            <div class="meta"><a href="../../c/bots/">Боты и серверы</a><span>1 мин чтения</span></div>
+            <div class="lede"><b>Коротко</b>Для старта, тестов и небольших ботов проще Long Polling — он не требует домена и SSL. Для проектов с нагрузкой, мини-приложений и бессерверного хостинга лучше Webhook.</div>
+            <div class="content"><h2>Сравнение подходов</h2>
+<table>
+<tr><th>Критерий</th><th>Long Polling</th><th>Webhook</th></tr>
+<tr><td>Как работает</td><td>Бот сам постоянно опрашивает сервер Telegram</td><td>Telegram присылает POST-запрос на ваш URL</td></tr>
+<tr><td>Требования</td><td>Только доступ в интернет, даже на домашнем ПК</td><td>Публичный сервер, домен и валидный HTTPS</td></tr>
+<tr><td>Задержка и нагрузка</td><td>Чуть выше расход трафика на пустые запросы</td><td>Мгновенная реакция, удобно масштабировать</td></tr>
+</table>
+<h2>Когда что выбирать</h2>
+<ul>
+<li class="pro"><b>Long Polling</b> — если вы новичок, делаете MVP или у бота меньше нескольких тысяч активных пользователей в день.</li>
+<li class="pro"><b>Webhook</b> — если нужен быстрый отклик, интеграция с платежами/сайтом или запуск в облачных функциях (Yandex Cloud Functions).</li>
+</ul>
+<div class="note">На Webhook обязательно задайте <code>secret_token</code> при вызове <code>setWebhook</code> и проверяйте заголовок <code>X-Telegram-Bot-Api-Secret-Token</code>.</div></div>
+            <div class="actions">
+              <div class="actions__right" style="margin-left:0">
+                <a class="btn" href="../../#/q/p07-bt-webhook-vs-polling">Открыть интерактивную версию</a>
+                <button type="button" class="btn" id="shareBtn">Скопировать ссылку</button>
+              </div>
+            </div>
+            <div class="cta-strip">
+              <div class="cta-strip__text"><b>Новые разборы и шпаргалки — в Telegram</b><span>Подпишитесь на канал, чтобы не пропускать полезные инструкции.</span></div>
+              <div class="cta-strip__btns"><a class="btn btn--primary" href="https://t.me/hypeotvet" target="_blank" rel="noopener noreferrer">Открыть Telegram</a></div>
+            </div>
+          </article>
+          <aside class="sidebar" aria-label="Другие вопросы">
+            <section class="side"><h2>Ещё в разделе «Боты и серверы»</h2><ul><li><a href="../telegram-bot-sozdat/">Как создать Telegram-бота бесплатно?</a></li><li><a href="../bot-s-neurosetyu/">Как сделать Telegram-бота с нейросетью внутри?</a></li><li><a href="../chto-takoe-vps/">Что такое VPS и зачем он нужен?</a></li><li><a href="../bot-na-server-24-7/">Как запустить бота на сервере, чтобы он работал 24/7?</a></li><li><a href="../avtomatizaciya-bez-koda/">Как автоматизировать рутину без программирования?</a></li><li><a href="../p07-bt-telegram-mini-apps/">Что такое Telegram Mini Apps и как сделать свой первый WebApp?</a></li></ul></section>
+            <section class="side"><h2>Горячее в других темах</h2><ul><li><a href="../neuro-bez-vpn-besplatno/">Какие нейросети работают в России без VPN и бесплатно?</a></li><li><a href="../analog-chatgpt/">Чем заменить ChatGPT в России?</a></li><li><a href="../deepseek-kak-polzovatsya/">Что такое DeepSeek и как им пользоваться?</a></li><li><a href="../kartinka-besplatno-bez-registracii/">Как сгенерировать картинку нейросетью бесплатно и без регистрации?</a></li><li><a href="../video-neuroset-besplatno/">Какая нейросеть делает видео бесплатно?</a></li></ul></section>
+          </aside>
+        </div></main>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="footer__brand">ХайпОтвет</div>
+        <div class="footer__links">
+          <a href="../../categories/">Все темы</a>
+          <a href="../../#/tools">Калькуляторы и чек-листы</a>
+          <a href="../../#/saved">Сохранённое</a>
+          <a href="../../about/">О сайте и правила</a>
+        </div>
+      </div>
+      <p class="footer__muted">Коротко и по делу о том, что спрашивают в Reels, TikTok и Shorts. Условия сервисов и законы меняются — перепроверяйте детали перед оплатой или подачей заявлений.</p>
+    </div>
+  </footer>
+  <script src="../../static-enhance.js"></script>
+</body>
+</html>

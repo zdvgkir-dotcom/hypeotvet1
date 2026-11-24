@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Что такое CORS и почему браузер блокирует запросы к API? — ХайпОтвет</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/logo/logo-dark.svg" />
+  <meta name="description" content="CORS — это защитный механизм браузера, который запрещает сайту на одном домене читать ответы от чужого домена без явного разрешения сервера. Ошибка чинится на стороне бэкенда добавлением заголовка Access-Control-Allow-Origin, а не во фронтенде." />
+  <link rel="canonical" href="https://hypeotvet.ru/q/p06-dv-cors-explained/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="ХайпОтвет" />
+  <meta property="og:title" content="Что такое CORS и почему браузер блокирует запросы к API? — ХайпОтвет" />
+  <meta property="og:description" content="CORS — это защитный механизм браузера, который запрещает сайту на одном домене читать ответы от чужого домена без явного разрешения сервера. Ошибка чинится на стороне бэкенда добавлением заголовка Access-Control-Allow-Origin, а не во фронтенде." />
+  <meta property="og:url" content="https://hypeotvet.ru/q/p06-dv-cors-explained/" />
+  <script>(function(){try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark";}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Что такое CORS и почему браузер блокирует запросы к API?","acceptedAnswer":{"@type":"Answer","text":"CORS — это защитный механизм браузера, который запрещает сайту на одном домене читать ответы от чужого домена без явного разрешения сервера. Ошибка чинится на стороне бэкенда добавлением заголовка Access-Control-Allow-Origin, а не во фронтенде. Почему в Postman работает, а в браузере — нет CORS проверяет именно браузер, чтобы вредоносный сайт не мог тайно делать запросы к вашему банку или почте, используя ваши cookies. Консольные утилиты вроде curl и Postman это правило не применяют. Когда срабатывает блокировка Если отличается хотя бы одна часть адреса: протокол ( http vs https ), домен ( site.ru vs api.site.ru ) или порт ( localhost:5173 vs localhost:3000 ). Как исправить правильно Если бэкенд ваш: настройте CORS-middleware на сервере (например, пакет cors в Express или CORSMiddleware в FastAPI) и явно укажите разрешённый домен фронтенда в Access-Control-Allow-Origin . Если API чужой (и не отдаёт CORS): делайте запрос через свой маленький бэкенд или серверный прокси, а не напрямую из браузера. Не ставьте в продакшене звёздочку * одновременно с передачей cookies ( credentials: true ) — браузер всё равно заблокирует такой ответ, а чрезмерно широкий CORS ослабляет безопасность."}}]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://hypeotvet.ru/"},{"@type":"ListItem","position":2,"name":"Разработка и сайты","item":"https://hypeotvet.ru/c/dev/"},{"@type":"ListItem","position":3,"name":"Что такое CORS и почему браузер блокирует запросы к API?","item":"https://hypeotvet.ru/q/p06-dv-cors-explained/"}]}]</script>
+</head>
+<body data-base="../../">
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../../" class="logo" aria-label="ХайпОтвет — на главную">Хайп<span>Ответ</span></a>
+      <form class="search" id="searchForm" role="search" autocomplete="off">
+        <label for="searchInput" class="visually-hidden">Поиск по вопросам</label>
+        <input type="search" id="searchInput" placeholder="Поиск по вопросам" />
+        <button type="submit">Найти</button>
+      </form>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="../../">Главная</a>
+        <a href="../../categories/">Темы</a>
+        <a href="../../#/tools">Инструменты</a>
+        <a href="../../#/saved">Сохранённое</a>
+      </nav>
+      <button type="button" class="theme-btn" id="themeToggle">Ночь</button>
+    </div>
+  </header>
+  <main class="container">
+        <nav class="crumbs" aria-label="Навигационная цепочка"><ol><li><a href="../../">Главная</a></li><li><a href="../../c/dev/">Разработка и сайты</a></li><li><span aria-current="page">Вопрос</span></li></ol></nav>
+        <div class="layout">
+          <article class="article">
+            <h1>Что такое CORS и почему браузер блокирует запросы к API?</h1>
+            <div class="meta"><a href="../../c/dev/">Разработка и сайты</a><span>1 мин чтения</span></div>
+            <div class="lede"><b>Коротко</b>CORS — это защитный механизм браузера, который запрещает сайту на одном домене читать ответы от чужого домена без явного разрешения сервера. Ошибка чинится на стороне бэкенда добавлением заголовка Access-Control-Allow-Origin, а не во фронтенде.</div>
+            <div class="content"><h2>Почему в Postman работает, а в браузере — нет</h2>
+<p>CORS проверяет именно браузер, чтобы вредоносный сайт не мог тайно делать запросы к вашему банку или почте, используя ваши cookies. Консольные утилиты вроде curl и Postman это правило не применяют.</p>
+<h2>Когда срабатывает блокировка</h2>
+<p>Если отличается хотя бы одна часть адреса: протокол (<code>http</code> vs <code>https</code>), домен (<code>site.ru</code> vs <code>api.site.ru</code>) или порт (<code>localhost:5173</code> vs <code>localhost:3000</code>).</p>
+<h2>Как исправить правильно</h2>
+<ol>
+  <li><b>Если бэкенд ваш:</b> настройте CORS-middleware на сервере (например, пакет <code>cors</code> в Express или <code>CORSMiddleware</code> в FastAPI) и явно укажите разрешённый домен фронтенда в <code>Access-Control-Allow-Origin</code>.</li>
+  <li><b>Если API чужой (и не отдаёт CORS):</b> делайте запрос через свой маленький бэкенд или серверный прокси, а не напрямую из браузера.</li>
+</ol>
+<div class="note note--warn">Не ставьте в продакшене звёздочку <code>*</code> одновременно с передачей cookies (<code>credentials: true</code>) — браузер всё равно заблокирует такой ответ, а чрезмерно широкий CORS ослабляет безопасность.</div></div>
+            <div class="actions">
+              <div class="actions__right" style="margin-left:0">
+                <a class="btn" href="../../#/q/p06-dv-cors-explained">Открыть интерактивную версию</a>
+                <button type="button" class="btn" id="shareBtn">Скопировать ссылку</button>
+              </div>
+            </div>
+            <div class="cta-strip">
+              <div class="cta-strip__text"><b>Новые разборы и шпаргалки — в Telegram</b><span>Подпишитесь на канал, чтобы не пропускать полезные инструкции.</span></div>
+              <div class="cta-strip__btns"><a class="btn btn--primary" href="https://t.me/hypeotvet" target="_blank" rel="noopener noreferrer">Открыть Telegram</a></div>
+            </div>
+          </article>
+          <aside class="sidebar" aria-label="Другие вопросы">
+            <section class="side"><h2>Ещё в разделе «Разработка и сайты»</h2><ul><li><a href="../sait-besplatno/">Как сделать сайт бесплатно?</a></li><li><a href="../hosting-v-rossii/">Какой хостинг выбрать в России?</a></li><li><a href="../s-chego-nachat-programmirovanie/">С чего начать изучать программирование в 2026 году?</a></li><li><a href="../domen-kak-kupit/">Как купить домен и подключить к сайту?</a></li><li><a href="../frontend-backend/">Чем фронтенд отличается от бэкенда?</a></li><li><a href="../p06-dv-git-commands/">Git и GitHub для новичка: 7 главных команд, которых хватит на старте</a></li></ul></section>
+            <section class="side"><h2>Горячее в других темах</h2><ul><li><a href="../neuro-bez-vpn-besplatno/">Какие нейросети работают в России без VPN и бесплатно?</a></li><li><a href="../analog-chatgpt/">Чем заменить ChatGPT в России?</a></li><li><a href="../deepseek-kak-polzovatsya/">Что такое DeepSeek и как им пользоваться?</a></li><li><a href="../kartinka-besplatno-bez-registracii/">Как сгенерировать картинку нейросетью бесплатно и без регистрации?</a></li><li><a href="../video-neuroset-besplatno/">Какая нейросеть делает видео бесплатно?</a></li></ul></section>
+          </aside>
+        </div></main>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="footer__brand">ХайпОтвет</div>
+        <div class="footer__links">
+          <a href="../../categories/">Все темы</a>
+          <a href="../../#/tools">Калькуляторы и чек-листы</a>
+          <a href="../../#/saved">Сохранённое</a>
+          <a href="../../about/">О сайте и правила</a>
+        </div>
+      </div>
+      <p class="footer__muted">Коротко и по делу о том, что спрашивают в Reels, TikTok и Shorts. Условия сервисов и законы меняются — перепроверяйте детали перед оплатой или подачей заявлений.</p>
+    </div>
+  </footer>
+  <script src="../../static-enhance.js"></script>
+</body>
+</html>

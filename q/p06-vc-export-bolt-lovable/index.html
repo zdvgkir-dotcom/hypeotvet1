@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Как перенести проект из Bolt или Lovable к себе на компьютер? — ХайпОтвет</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/logo/logo-dark.svg" />
+  <meta name="description" content="Подключите двухстороннюю синхронизацию с GitHub (или скачайте ZIP-архив), откройте папку в VS Code или Cursor, установите Node.js и запустите npm install, а затем npm run dev." />
+  <link rel="canonical" href="https://hypeotvet.ru/q/p06-vc-export-bolt-lovable/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="ХайпОтвет" />
+  <meta property="og:title" content="Как перенести проект из Bolt или Lovable к себе на компьютер? — ХайпОтвет" />
+  <meta property="og:description" content="Подключите двухстороннюю синхронизацию с GitHub (или скачайте ZIP-архив), откройте папку в VS Code или Cursor, установите Node.js и запустите npm install, а затем npm run dev." />
+  <meta property="og:url" content="https://hypeotvet.ru/q/p06-vc-export-bolt-lovable/" />
+  <script>(function(){try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark";}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Как перенести проект из Bolt или Lovable к себе на компьютер?","acceptedAnswer":{"@type":"Answer","text":"Подключите двухстороннюю синхронизацию с GitHub (или скачайте ZIP-архив), откройте папку в VS Code или Cursor, установите Node.js и запустите npm install, а затем npm run dev. Зачем переносить проект из браузерного конструктора В браузерных средах вроде Bolt.new, Lovable или v0 удобно делать первый прототип, но на своём ПК вы получаете полный контроль над Git, не сжигаете кредиты на мелкие правки и можете деплоить код на любой российский сервер. Пошаговый перенос Экспорт кода: в Lovable нажмите GitHub → Connect (лучший вариант, сохраняет историю), в Bolt выберите Export → Download Project или синхронизацию с GitHub. Клонирование: выполните git clone &lt;ссылка_на_репозиторий&gt; и откройте папку в Cursor или VS Code. Окружение: установите Node.js LTS (версии 20 или 22) с официального сайта. Переменные: скопируйте ключи (например, URL и anon key от Supabase) в локальный файл .env . Запуск: в терминале редактора выполните npm install , а затем npm run dev и откройте адрес вроде http://localhost:5173 . Если при сборке мешают специфичные плагины платформы-конструктора в vite.config.ts , попросите ИИ в локальном редакторе аккуратно вычистить зависимости конструктора."}}]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://hypeotvet.ru/"},{"@type":"ListItem","position":2,"name":"Вайбкодинг бесплатно","item":"https://hypeotvet.ru/c/vibecoding/"},{"@type":"ListItem","position":3,"name":"Как перенести проект из Bolt или Lovable к себе на компьютер?","item":"https://hypeotvet.ru/q/p06-vc-export-bolt-lovable/"}]}]</script>
+</head>
+<body data-base="../../">
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../../" class="logo" aria-label="ХайпОтвет — на главную">Хайп<span>Ответ</span></a>
+      <form class="search" id="searchForm" role="search" autocomplete="off">
+        <label for="searchInput" class="visually-hidden">Поиск по вопросам</label>
+        <input type="search" id="searchInput" placeholder="Поиск по вопросам" />
+        <button type="submit">Найти</button>
+      </form>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="../../">Главная</a>
+        <a href="../../categories/">Темы</a>
+        <a href="../../#/tools">Инструменты</a>
+        <a href="../../#/saved">Сохранённое</a>
+      </nav>
+      <button type="button" class="theme-btn" id="themeToggle">Ночь</button>
+    </div>
+  </header>
+  <main class="container">
+        <nav class="crumbs" aria-label="Навигационная цепочка"><ol><li><a href="../../">Главная</a></li><li><a href="../../c/vibecoding/">Вайбкодинг бесплатно</a></li><li><span aria-current="page">Вопрос</span></li></ol></nav>
+        <div class="layout">
+          <article class="article">
+            <h1>Как перенести проект из Bolt или Lovable к себе на компьютер?</h1>
+            <div class="meta"><a href="../../c/vibecoding/">Вайбкодинг бесплатно</a><span>1 мин чтения</span></div>
+            <div class="lede"><b>Коротко</b>Подключите двухстороннюю синхронизацию с GitHub (или скачайте ZIP-архив), откройте папку в VS Code или Cursor, установите Node.js и запустите npm install, а затем npm run dev.</div>
+            <div class="content"><h2>Зачем переносить проект из браузерного конструктора</h2>
+<p>В браузерных средах вроде Bolt.new, Lovable или v0 удобно делать первый прототип, но на своём ПК вы получаете полный контроль над Git, не сжигаете кредиты на мелкие правки и можете деплоить код на любой российский сервер.</p>
+<h2>Пошаговый перенос</h2>
+<ol>
+  <li><b>Экспорт кода:</b> в Lovable нажмите <b>GitHub → Connect</b> (лучший вариант, сохраняет историю), в Bolt выберите <b>Export → Download Project</b> или синхронизацию с GitHub.</li>
+  <li><b>Клонирование:</b> выполните <code>git clone &lt;ссылка_на_репозиторий&gt;</code> и откройте папку в Cursor или VS Code.</li>
+  <li><b>Окружение:</b> установите Node.js LTS (версии 20 или 22) с официального сайта.</li>
+  <li><b>Переменные:</b> скопируйте ключи (например, URL и anon key от Supabase) в локальный файл <code>.env</code>.</li>
+  <li><b>Запуск:</b> в терминале редактора выполните <code>npm install</code>, а затем <code>npm run dev</code> и откройте адрес вроде <code>http://localhost:5173</code>.</li>
+</ol>
+<div class="note">Если при сборке мешают специфичные плагины платформы-конструктора в <code>vite.config.ts</code>, попросите ИИ в локальном редакторе аккуратно вычистить зависимости конструктора.</div></div>
+            <div class="actions">
+              <div class="actions__right" style="margin-left:0">
+                <a class="btn" href="../../#/q/p06-vc-export-bolt-lovable">Открыть интерактивную версию</a>
+                <button type="button" class="btn" id="shareBtn">Скопировать ссылку</button>
+              </div>
+            </div>
+            <div class="cta-strip">
+              <div class="cta-strip__text"><b>Новые разборы и шпаргалки — в Telegram</b><span>Подпишитесь на канал, чтобы не пропускать полезные инструкции.</span></div>
+              <div class="cta-strip__btns"><a class="btn btn--primary" href="https://t.me/hypeotvet" target="_blank" rel="noopener noreferrer">Открыть Telegram</a></div>
+            </div>
+          </article>
+          <aside class="sidebar" aria-label="Другие вопросы">
+            <section class="side"><h2>Ещё в разделе «Вайбкодинг бесплатно»</h2><ul><li><a href="../chto-takoe-vibecoding/">Что такое вайбкодинг простыми словами?</a></li><li><a href="../vibecoding-besplatno-instrumenty/">Какие инструменты для вайбкодинга можно использовать бесплатно?</a></li><li><a href="../pervyi-proekt-vibecoding/">Как сделать первый проект вайбкодингом за вечер?</a></li><li><a href="../vibecoding-oshibki/">Какие ошибки совершают новички в вайбкодинге?</a></li><li><a href="../nuzhno-li-uchit-programmirovanie/">Нужно ли учить программирование, если есть вайбкодинг?</a></li><li><a href="../p06-vc-prd-plan/">Как составить ТЗ и план (PRD) перед стартом вайбкодинга?</a></li></ul></section>
+            <section class="side"><h2>Горячее в других темах</h2><ul><li><a href="../neuro-bez-vpn-besplatno/">Какие нейросети работают в России без VPN и бесплатно?</a></li><li><a href="../analog-chatgpt/">Чем заменить ChatGPT в России?</a></li><li><a href="../deepseek-kak-polzovatsya/">Что такое DeepSeek и как им пользоваться?</a></li><li><a href="../kartinka-besplatno-bez-registracii/">Как сгенерировать картинку нейросетью бесплатно и без регистрации?</a></li><li><a href="../video-neuroset-besplatno/">Какая нейросеть делает видео бесплатно?</a></li></ul></section>
+          </aside>
+        </div></main>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="footer__brand">ХайпОтвет</div>
+        <div class="footer__links">
+          <a href="../../categories/">Все темы</a>
+          <a href="../../#/tools">Калькуляторы и чек-листы</a>
+          <a href="../../#/saved">Сохранённое</a>
+          <a href="../../about/">О сайте и правила</a>
+        </div>
+      </div>
+      <p class="footer__muted">Коротко и по делу о том, что спрашивают в Reels, TikTok и Shorts. Условия сервисов и законы меняются — перепроверяйте детали перед оплатой или подачей заявлений.</p>
+    </div>
+  </footer>
+  <script src="../../static-enhance.js"></script>
+</body>
+</html>

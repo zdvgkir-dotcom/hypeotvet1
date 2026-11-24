@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Как настроить локальный вайбкодинг на своём ПК (Ollama + Continue)? — ХайпОтвет</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/logo/logo-dark.svg" />
+  <meta name="description" content="Установите Ollama, скачайте специализированную модель для кода (например, Qwen2.5-Coder или Qwen3-Coder подходящего размера под вашу видеокарту) и подключите её в VS Code через бесплатное расширение Continue или Cline." />
+  <link rel="canonical" href="https://hypeotvet.ru/q/p06-vc-local-ollama/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="ХайпОтвет" />
+  <meta property="og:title" content="Как настроить локальный вайбкодинг на своём ПК (Ollama + Continue)? — ХайпОтвет" />
+  <meta property="og:description" content="Установите Ollama, скачайте специализированную модель для кода (например, Qwen2.5-Coder или Qwen3-Coder подходящего размера под вашу видеокарту) и подключите её в VS Code через бесплатное расширение Continue или Cline." />
+  <meta property="og:url" content="https://hypeotvet.ru/q/p06-vc-local-ollama/" />
+  <script>(function(){try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark";}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Как настроить локальный вайбкодинг на своём ПК (Ollama + Continue)?","acceptedAnswer":{"@type":"Answer","text":"Установите Ollama, скачайте специализированную модель для кода (например, Qwen2.5-Coder или Qwen3-Coder подходящего размера под вашу видеокарту) и подключите её в VS Code через бесплатное расширение Continue или Cline. Зачем запускать модели локально Код не покидает ваш компьютер (важно для приватных проектов), нет ежемесячных подписок и лимитов, всё работает даже без интернета. Минус — качество и скорость напрямую зависят от видеопамяти (VRAM). Что потянет ваш ПК (ориентиры) Видеопамять (VRAM) Рекомендуемый размер модели (Q4) Задачи 8 ГБ 7B-8B (например, qwen2.5-coder:7b ) Автодополнение, мелкие скрипты 12-16 ГБ 14B Уверенные правки, функции, тесты 24 ГБ и выше / Mac 32+ ГБ 32B Полноценный локальный вайбкодинг Настройка за 4 шага Скачайте и установите Ollama (или LM Studio с графическим интерфейсом). Выполните в терминале ollama pull qwen2.5-coder:7b (или актуальную версию под вашу VRAM). В VS Code установите расширение Continue (или Cline / Roo Code ). В настройках выберите провайдер Ollama , адрес http://localhost:11434 и скачанную модель."}}]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://hypeotvet.ru/"},{"@type":"ListItem","position":2,"name":"Вайбкодинг бесплатно","item":"https://hypeotvet.ru/c/vibecoding/"},{"@type":"ListItem","position":3,"name":"Как настроить локальный вайбкодинг на своём ПК (Ollama + Continue)?","item":"https://hypeotvet.ru/q/p06-vc-local-ollama/"}]}]</script>
+</head>
+<body data-base="../../">
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../../" class="logo" aria-label="ХайпОтвет — на главную">Хайп<span>Ответ</span></a>
+      <form class="search" id="searchForm" role="search" autocomplete="off">
+        <label for="searchInput" class="visually-hidden">Поиск по вопросам</label>
+        <input type="search" id="searchInput" placeholder="Поиск по вопросам" />
+        <button type="submit">Найти</button>
+      </form>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="../../">Главная</a>
+        <a href="../../categories/">Темы</a>
+        <a href="../../#/tools">Инструменты</a>
+        <a href="../../#/saved">Сохранённое</a>
+      </nav>
+      <button type="button" class="theme-btn" id="themeToggle">Ночь</button>
+    </div>
+  </header>
+  <main class="container">
+        <nav class="crumbs" aria-label="Навигационная цепочка"><ol><li><a href="../../">Главная</a></li><li><a href="../../c/vibecoding/">Вайбкодинг бесплатно</a></li><li><span aria-current="page">Вопрос</span></li></ol></nav>
+        <div class="layout">
+          <article class="article">
+            <h1>Как настроить локальный вайбкодинг на своём ПК (Ollama + Continue)?</h1>
+            <div class="meta"><span class="tag tag--new">Новое</span><a href="../../c/vibecoding/">Вайбкодинг бесплатно</a><span>1 мин чтения</span></div>
+            <div class="lede"><b>Коротко</b>Установите Ollama, скачайте специализированную модель для кода (например, Qwen2.5-Coder или Qwen3-Coder подходящего размера под вашу видеокарту) и подключите её в VS Code через бесплатное расширение Continue или Cline.</div>
+            <div class="content"><h2>Зачем запускать модели локально</h2>
+<p>Код не покидает ваш компьютер (важно для приватных проектов), нет ежемесячных подписок и лимитов, всё работает даже без интернета. Минус — качество и скорость напрямую зависят от видеопамяти (VRAM).</p>
+<h2>Что потянет ваш ПК (ориентиры)</h2>
+<table>
+  <tr><th>Видеопамять (VRAM)</th><th>Рекомендуемый размер модели (Q4)</th><th>Задачи</th></tr>
+  <tr><td>8 ГБ</td><td>7B-8B (например, <code>qwen2.5-coder:7b</code>)</td><td>Автодополнение, мелкие скрипты</td></tr>
+  <tr><td>12-16 ГБ</td><td>14B</td><td>Уверенные правки, функции, тесты</td></tr>
+  <tr><td>24 ГБ и выше / Mac 32+ ГБ</td><td>32B</td><td>Полноценный локальный вайбкодинг</td></tr>
+</table>
+<h2>Настройка за 4 шага</h2>
+<ol>
+  <li>Скачайте и установите <b>Ollama</b> (или <b>LM Studio</b> с графическим интерфейсом).</li>
+  <li>Выполните в терминале <code>ollama pull qwen2.5-coder:7b</code> (или актуальную версию под вашу VRAM).</li>
+  <li>В VS Code установите расширение <b>Continue</b> (или <b>Cline</b> / <b>Roo Code</b>).</li>
+  <li>В настройках выберите провайдер <code>Ollama</code>, адрес <code>http://localhost:11434</code> и скачанную модель.</li>
+</ol></div>
+            <div class="actions">
+              <div class="actions__right" style="margin-left:0">
+                <a class="btn" href="../../#/q/p06-vc-local-ollama">Открыть интерактивную версию</a>
+                <button type="button" class="btn" id="shareBtn">Скопировать ссылку</button>
+              </div>
+            </div>
+            <div class="cta-strip">
+              <div class="cta-strip__text"><b>Новые разборы и шпаргалки — в Telegram</b><span>Подпишитесь на канал, чтобы не пропускать полезные инструкции.</span></div>
+              <div class="cta-strip__btns"><a class="btn btn--primary" href="https://t.me/hypeotvet" target="_blank" rel="noopener noreferrer">Открыть Telegram</a></div>
+            </div>
+          </article>
+          <aside class="sidebar" aria-label="Другие вопросы">
+            <section class="side"><h2>Ещё в разделе «Вайбкодинг бесплатно»</h2><ul><li><a href="../chto-takoe-vibecoding/">Что такое вайбкодинг простыми словами?</a></li><li><a href="../vibecoding-besplatno-instrumenty/">Какие инструменты для вайбкодинга можно использовать бесплатно?</a></li><li><a href="../pervyi-proekt-vibecoding/">Как сделать первый проект вайбкодингом за вечер?</a></li><li><a href="../vibecoding-oshibki/">Какие ошибки совершают новички в вайбкодинге?</a></li><li><a href="../nuzhno-li-uchit-programmirovanie/">Нужно ли учить программирование, если есть вайбкодинг?</a></li><li><a href="../p06-vc-prd-plan/">Как составить ТЗ и план (PRD) перед стартом вайбкодинга?</a></li></ul></section>
+            <section class="side"><h2>Горячее в других темах</h2><ul><li><a href="../neuro-bez-vpn-besplatno/">Какие нейросети работают в России без VPN и бесплатно?</a></li><li><a href="../analog-chatgpt/">Чем заменить ChatGPT в России?</a></li><li><a href="../deepseek-kak-polzovatsya/">Что такое DeepSeek и как им пользоваться?</a></li><li><a href="../kartinka-besplatno-bez-registracii/">Как сгенерировать картинку нейросетью бесплатно и без регистрации?</a></li><li><a href="../video-neuroset-besplatno/">Какая нейросеть делает видео бесплатно?</a></li></ul></section>
+          </aside>
+        </div></main>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="footer__brand">ХайпОтвет</div>
+        <div class="footer__links">
+          <a href="../../categories/">Все темы</a>
+          <a href="../../#/tools">Калькуляторы и чек-листы</a>
+          <a href="../../#/saved">Сохранённое</a>
+          <a href="../../about/">О сайте и правила</a>
+        </div>
+      </div>
+      <p class="footer__muted">Коротко и по делу о том, что спрашивают в Reels, TikTok и Shorts. Условия сервисов и законы меняются — перепроверяйте детали перед оплатой или подачей заявлений.</p>
+    </div>
+  </footer>
+  <script src="../../static-enhance.js"></script>
+</body>
+</html>
