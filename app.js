@@ -2,7 +2,7 @@
   /* Настройки вашего проекта — подставьте реальные ссылки перед публикацией */
   const SITE_CONFIG = {
     siteName: "ХайпОтвет",
-    siteDomain: "hypeotvet.ru",
+    siteDomain: "hypeotvet.netlify.app",
     telegramChannelUrl: "https://t.me/hypeotvet",
     telegramBotHandle: "hypeotvet_app"
   };
@@ -642,11 +642,13 @@
 
   function renderHome() {
     const hot = interleaveByCat(questions.filter((q) => q.hot), [
-      "phones", "zhkh", "gosuslugi", "housing", "travel", "health",
+      "diy-repair", "phones", "zhkh", "cleaning-home", "auto-care",
+      "gosuslugi", "housing", "travel", "health", "kitchen-food", "life-skills",
       "games", "security", "access", "neuro", "apps", "crypto-fin", "pc", "gadgets", "home-tech"
     ]);
     const fresh = interleaveByCat(questions.filter((q) => q.isNew), [
-      "housing", "travel", "health", "zhkh", "gosuslugi", "security", "games", "access", "phones", "apps"
+      "diy-repair", "cleaning-home", "kitchen-food", "auto-care", "life-skills",
+      "housing", "travel", "health", "zhkh", "gosuslugi"
     ]).slice(0, 10);
     const defaults = hot.slice(0, 5);
     document.title = `${SITE_CONFIG.siteName} — ответы на вопросы, которые все гуглят`;
@@ -654,11 +656,11 @@
     app.innerHTML = `
       <section class="hero" aria-labelledby="heroTitle">
         <h1 id="heroTitle">Ответы на то, что <span class="marker">все гуглят</span> после рилсов</h1>
-        <p class="hero__lede">Смартфоны и iCloud, ЖКХ и Госуслуги, аренда, путешествия, ОМС, игры и Steam, защита от мошенников и нейросети — разборы по шагам, без воды.</p>
+        <p class="hero__lede">Ремонт, сантехника и быт, ЖКХ и Госуслуги, авто, права, смартфоны, игры, приложения и нейросети — более 1 000 разборов по шагам, без воды.</p>
         <form class="qsearch" id="heroForm" role="search" autocomplete="off">
           <label class="qsearch__label" for="heroInput">Задайте вопрос так, как спросили бы поисковик (понимает раскладку и синонимы)</label>
           <div class="qsearch__field">
-            <input id="heroInput" type="search" placeholder="передать показания, прописка, стим, аренда квартиры, омс" aria-describedby="suggestHead" aria-controls="heroSuggest" />
+            <input id="heroInput" type="search" placeholder="засор в раковине, поменять розетку, передать показания, стим" aria-describedby="suggestHead" aria-controls="heroSuggest" />
             <button type="submit">Найти ответ</button>
           </div>
           <div class="suggest">
@@ -821,11 +823,23 @@
     if (!q) return renderNotFound();
     const c = catById[q.cat];
     document.title = `${q.title} — ${SITE_CONFIG.siteName}`;
-    const related = questions.filter((x) => x.cat === q.cat && x.id !== q.id).slice(0, 6);
+    const related = (() => {
+      const list = questions.filter((x) => x.cat === q.cat);
+      const idx = list.findIndex((x) => x.id === q.id);
+      const out = [];
+      for (const off of [-2, -1, 1, 2, 3, 4]) {
+        const pick = list[(idx + off + list.length * 4) % list.length];
+        if (pick && pick.id !== q.id && !out.includes(pick)) out.push(pick);
+      }
+      return out.slice(0, 6);
+    })();
     const hot = interleaveByCat(questions.filter((x) => x.hot && x.cat !== q.cat)).slice(0, 5);
     const vote = localStorage.getItem("vote:" + q.id);
     const saved = isSaved(q.id);
     const wType = WIDGET_MAP[q.id];
+    const deepPayload = ("q_" + q.id).length <= 64 ? "q_" + q.id : "n_" + questions.indexOf(q);
+    const deepLink = `https://t.me/${SITE_CONFIG.telegramBotHandle}?start=${deepPayload}`;
+    const isStatusCat = ["neuro", "access", "games"].includes(q.cat);
 
     app.innerHTML = `
       ${crumbs([["Главная", "#/"], [c.title, `#/c/${c.id}`], ["Вопрос"]])}
@@ -848,12 +862,16 @@
           </div>
           <div class="cta-strip">
             <div class="cta-strip__text">
-              <b>Новые разборы и шпаргалки — в Telegram</b>
-              <span>Подпишитесь на канал или предложите вопрос, которого ещё нет в базе.</span>
+              <b>Открыть эту шпаргалку в Telegram</b>
+              <span>${isStatusCat
+                ? "Бот пришлёт короткую карточку именно этого вопроса, а по команде /status покажет актуальный статус сервисов на сегодня."
+                : "Чтобы не потерять ответ под рукой и получать обновления по теме."}</span>
             </div>
             <div class="cta-strip__btns">
-              <a class="btn btn--primary" href="${SITE_CONFIG.telegramChannelUrl}" target="_blank" rel="noopener noreferrer">Открыть Telegram</a>
-              <button type="button" class="btn" id="articleSuggestBtn">Предложить вопрос</button>
+              <a class="btn btn--primary" href="${deepLink}" target="_blank" rel="noopener noreferrer">Открыть в боте</a>
+              ${isStatusCat
+                ? `<a class="btn" href="https://t.me/${SITE_CONFIG.telegramBotHandle}?start=status" target="_blank" rel="noopener noreferrer">Статус (/status)</a>`
+                : `<button type="button" class="btn" id="articleSuggestBtn">Предложить вопрос</button>`}
             </div>
           </div>
         </article>

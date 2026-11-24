@@ -1,0 +1,7 @@
+bot/.env
+bot/state.json
+bot/suggestions.json
+bot/subscribers.json
+.env
+dist/
+node_modules/
