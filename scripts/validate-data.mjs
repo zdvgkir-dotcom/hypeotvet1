@@ -7,10 +7,10 @@ if (process.argv.includes("--clean-short")) {
   for (const f of fs.readdirSync("data").filter((x) => /^pack-(19|[2-9]\d|\d{3})\.js$/.test(x)).sort()) {
     const p = "data/" + f;
     let txt = fs.readFileSync(p, "utf8");
-    // Only strip <b>, </b>, <code>, </code> on lines starting with 6 spaces + double quote (short / title)
+    // Only strip <b>, <i>, <code> on lines starting with 6 spaces + double quote (short / title)
     const lines = txt.split(/\r?\n/).map((line) => {
-      if (/^      ".*",\s*$/.test(line) && /<\/?(b|code)>/i.test(line)) {
-        return line.replace(/<\/?(b|code)>/gi, "");
+      if (/^      ".*",\s*$/.test(line) && /<\/?(b|i|code)>/i.test(line)) {
+        return line.replace(/<\/?(b|i|code)>/gi, "");
       }
       return line;
     });
