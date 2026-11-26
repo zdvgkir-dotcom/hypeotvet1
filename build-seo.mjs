@@ -527,7 +527,7 @@ const widgetHTML = (type) => {
 };
 
 /* ---------- Shared HTML Shell ---------- */
-const shell = ({ title, desc, canonical, base, bodyHtml, ldJson, nav = "", isHome = false, ogType = "article" }) => `<!DOCTYPE html>
+const shell = ({ title, desc, canonical, base, bodyHtml, ldJson, nav = "", isHome = false, ogType = "article", extraHead = "" }) => `<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -536,6 +536,7 @@ const shell = ({ title, desc, canonical, base, bodyHtml, ldJson, nav = "", isHom
   <link rel="icon" type="image/svg+xml" href="${base}assets/logo/logo-dark.svg" />
   <meta name="description" content="${esc(desc)}" />
   <link rel="canonical" href="${esc(canonical)}" />
+  ${extraHead}
   <meta property="og:type" content="${ogType}" />
   <meta property="og:site_name" content="${SITE_NAME}" />
   <meta property="og:title" content="${esc(title)}" />
@@ -612,11 +613,14 @@ const freshMixed = interleaveByCat(questions.filter((q) => q.isNew), [
 ]).slice(0, 10);
 const heroDefaults = hotMixed.slice(0, 5);
 
+const roundedCount = Math.floor(questions.length / 100) * 100;
+const roundedCountFmt = String(roundedCount).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+
 writeFile(
   "index.html",
   shell({
     title: `${SITE_NAME} — ответы на вопросы, которые все гуглят`,
-    desc: `Более 1000 пошаговых разборов вопросов из Reels, TikTok и поиска: ремонт, сантехника и быт, ЖКХ, Госуслуги, авто, права, смартфоны, игры, приложения и нейросети.`,
+    desc: `Более ${roundedCountFmt} пошаговых разборов вопросов из Reels, TikTok и поиска: ремонт, сантехника и быт, ЖКХ, Госуслуги, авто, права, смартфоны, игры, приложения и нейросети.`,
     canonical: `${SITE_URL}/`,
     base: "./",
     nav: "home",
@@ -636,7 +640,7 @@ writeFile(
     bodyHtml: `
       <section class="hero" aria-labelledby="heroTitle">
         <h1 id="heroTitle">Ответы на то, что <span class="marker">все гуглят</span> после рилсов</h1>
-        <p class="hero__lede">Ремонт, сантехника и быт, ЖКХ и Госуслуги, авто, права, смартфоны, игры, приложения и нейросети — более 1 000 разборов по шагам, без воды.</p>
+        <p class="hero__lede">Ремонт, сантехника и быт, ЖКХ и Госуслуги, авто, права, смартфоны, игры, приложения и нейросети — более ${roundedCountFmt} разборов по шагам, без воды.</p>
         <form class="qsearch" id="heroForm" role="search" autocomplete="off">
           <label class="qsearch__label" for="heroInput">Задайте вопрос так, как спросили бы поисковик (понимает раскладку и синонимы)</label>
           <div class="qsearch__field">
@@ -755,45 +759,82 @@ writeFile(
   })
 );
 
-/* ---------- 3. Category Pages (dist/c/<id>/index.html) ---------- */
+/* ---------- 3. Category Pages with SEO Pagination (dist/c/<id>/ & dist/c/<id>/page/N/) ---------- */
+const PER_PAGE = 40;
 const byCategory = Object.fromEntries(categories.map((c) => [c.id, questions.filter((q) => q.cat === c.id)]));
+
+const catPageHref = (base, catId, p) => (p <= 1 ? `${base}c/${catId}/` : `${base}c/${catId}/page/${p}/`);
+const catPageUrl = (catId, p) => (p <= 1 ? `${SITE_URL}/c/${catId}/` : `${SITE_URL}/c/${catId}/page/${p}/`);
+
+const buildPager = (base, catId, page, totalPages) => {
+  if (totalPages <= 1) return "";
+  const parts = [];
+  if (page > 1) parts.push(`<a class="pager__link" href="${catPageHref(base, catId, page - 1)}" rel="prev">← Назад</a>`);
+  for (let p = 1; p <= totalPages; p++) {
+    if (p === page) {
+      parts.push(`<span class="pager__cur" aria-current="page">${p}</span>`);
+    } else if (p === 1 || p === totalPages || Math.abs(p - page) <= 2) {
+      parts.push(`<a class="pager__link" href="${catPageHref(base, catId, p)}">${p}</a>`);
+    } else if (Math.abs(p - page) === 3) {
+      parts.push(`<span class="pager__gap">…</span>`);
+    }
+  }
+  if (page < totalPages) parts.push(`<a class="pager__link" href="${catPageHref(base, catId, page + 1)}" rel="next">Дальше →</a>`);
+  return `<nav class="pager" aria-label="Страницы раздела">${parts.join("")}</nav>`;
+};
 
 for (const c of categories) {
   const list = byCategory[c.id];
-  const url = `${SITE_URL}/c/${c.id}/`;
-  sitemapUrls.push(url);
-  const hotCount = list.filter((q) => q.hot).length;
-  const newCount = list.filter((q) => q.isNew).length;
+  const totalPages = Math.max(1, Math.ceil(list.length / PER_PAGE));
 
-  writeFile(
-    `c/${c.id}/index.html`,
-    shell({
-      title: `${c.title} — ${SITE_NAME}`,
-      desc: `${c.desc}. ${qWord(list.length)} с подробными пошаговыми ответами.`,
-      canonical: url,
-      base: "../../",
-      nav: "categories",
-      ogType: "website",
-      ldJson: {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Главная", item: `${SITE_URL}/` },
-          { "@type": "ListItem", position: 2, name: "Темы", item: `${SITE_URL}/categories/` },
-          { "@type": "ListItem", position: 3, name: c.title, item: url }
-        ]
-      },
-      bodyHtml: `
-        <nav class="crumbs" aria-label="Навигационная цепочка"><ol><li><a href="../../">Главная</a></li><li><a href="../../categories/">Темы</a></li><li><span aria-current="page">${esc(c.title)}</span></li></ol></nav>
-        <header class="pagehead"><span class="pagehead__num">Раздел ${catIndex[c.id]}</span><h1>${esc(c.title)}</h1><p>${esc(c.desc)}. ${qWord(list.length)}.</p></header>
-        <div class="filters" role="group" aria-label="Фильтр вопросов" data-cat-filters>
-          <button type="button" class="filter" data-f="all" aria-pressed="true">Все (${list.length})</button>
-          <button type="button" class="filter" data-f="hot" aria-pressed="false">Хайп (${hotCount})</button>
-          <button type="button" class="filter" data-f="new" aria-pressed="false">Новое (${newCount})</button>
-        </div>
-        <ul class="qlist">${list.map((q) => qRowStatic(q, "../../", { showCat: false, showShort: true })).join("")}</ul>`
-    })
-  );
+  for (let page = 1; page <= totalPages; page++) {
+    const slice = list.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+    const isFirst = page === 1;
+    const base = isFirst ? "../../" : "../../../../";
+    const url = catPageUrl(c.id, page);
+    sitemapUrls.push(url);
+
+    const extraLinks = [];
+    if (page > 1) extraLinks.push(`<link rel="prev" href="${esc(catPageUrl(c.id, page - 1))}" />`);
+    if (page < totalPages) extraLinks.push(`<link rel="next" href="${esc(catPageUrl(c.id, page + 1))}" />`);
+
+    const hotCount = slice.filter((q) => q.hot).length;
+    const newCount = slice.filter((q) => q.isNew).length;
+    const pageSuffix = isFirst ? "" : ` — страница ${page} из ${totalPages}`;
+    const pagerHtml = buildPager(base, c.id, page, totalPages);
+
+    writeFile(
+      isFirst ? `c/${c.id}/index.html` : `c/${c.id}/page/${page}/index.html`,
+      shell({
+        title: `${c.title}${pageSuffix} — ${SITE_NAME}`,
+        desc: `${c.desc}. ${qWord(list.length)} с подробными пошаговыми ответами${isFirst ? "" : ` (стр. ${page})`}.`,
+        canonical: url,
+        base,
+        nav: "categories",
+        ogType: "website",
+        extraHead: extraLinks.join("\n  "),
+        ldJson: {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Главная", item: `${SITE_URL}/` },
+            { "@type": "ListItem", position: 2, name: "Темы", item: `${SITE_URL}/categories/` },
+            { "@type": "ListItem", position: 3, name: c.title, item: catPageUrl(c.id, 1) }
+          ]
+        },
+        bodyHtml: `
+          <nav class="crumbs" aria-label="Навигационная цепочка"><ol><li><a href="${base}">Главная</a></li><li><a href="${base}categories/">Темы</a></li><li><span aria-current="page">${esc(c.title)}${isFirst ? "" : ` · стр. ${page}`}</span></li></ol></nav>
+          <header class="pagehead"><span class="pagehead__num">Раздел ${catIndex[c.id]}${totalPages > 1 ? ` · Страница ${page} из ${totalPages}` : ""}</span><h1>${esc(c.title)}</h1><p>${esc(c.desc)}. ${qWord(list.length)}.</p></header>
+          <div class="filters" role="group" aria-label="Фильтр вопросов" data-cat-filters>
+            <button type="button" class="filter" data-f="all" aria-pressed="true">На странице (${slice.length})</button>
+            <button type="button" class="filter" data-f="hot" aria-pressed="false">Хайп (${hotCount})</button>
+            <button type="button" class="filter" data-f="new" aria-pressed="false">Новое (${newCount})</button>
+          </div>
+          <ul class="qlist">${slice.map((q) => qRowStatic(q, base, { showCat: false, showShort: true })).join("")}</ul>
+          ${pagerHtml}`
+      })
+    );
+  }
 }
 
 /* ---------- 4. Question Pages (dist/q/<id>/index.html) ---------- */
